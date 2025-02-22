@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Calculator</title>
+    <style>
+        body {
+            background-color: darkgreen;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        input[type="number"] {
+            margin: 5px;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student grade calculator</h2>
+
+    <input type="number" id="mark1" placeholder="Mark 1"><br>
+    <input type="number" id="mark2" placeholder="Mark 2"><br>
+    <input type="number" id="mark3" placeholder="Mark 3"><br>
+    <input type="number" id="mark4" placeholder="Mark 4"><br>
+
+    <button onclick="calculateGrade()">Show Percentage</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateGrade() {
+            var mark1 = parseFloat(document.getElementById("mark1").value) || 0;
+            var mark2 = parseFloat(document.getElementById("mark2").value) || 0;
+            var mark3 = parseFloat(document.getElementById("mark3").value) || 0;
+            var mark4 = parseFloat(document.getElementById("mark4").value) || 0;
+
+            var total = mark1 + mark2 + mark3 + mark4;
+            var percentage = (total / 400) * 100;
+
+            var grade = "";
+            if (percentage >= 90) {
+                grade = "A";
+            } else if (percentage >= 80) {
+                grade = "B";
+            } else if (percentage >= 70) {
+                grade = "C";
+            } else if (percentage >= 60) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            var passFail = (percentage >= 60) ? "Pass" : "Fail";
+
+            document.getElementById("result").innerText =
+                "Out of 400 your total is " + total + " and percentage is " + percentage.toFixed(0) + "%.\n" +
+                "Your grade is " + grade + ". You are " + passFail + ".";
+        }
+    </script>
+
+</body>
+</html>
